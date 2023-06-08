@@ -27,9 +27,8 @@
 
             Dim TimeOwed As TimeSpan = timeCompleted - partTimeOwed
             DataGridView1.Rows.Add(DateTimePicker1.Text, TextBox1.Text, TextBox2.Text, TimeOwed)
-        End If
 
-        If RadioButton1.Checked AndAlso selectedDate.DayOfWeek = DayOfWeek.Friday AndAlso (timeIn >= startTime_pyei) Then
+        ElseIf RadioButton1.Checked AndAlso selectedDate.DayOfWeek = DayOfWeek.Friday Then
             Dim partTimeOwed As TimeSpan = timeIn - startTime_pyei
             Dim timeCompleted As TimeSpan = timeOut - endTime_frid
 
@@ -37,7 +36,7 @@
             DataGridView1.Rows.Add(DateTimePicker1.Text, TextBox1.Text, TextBox2.Text, TimeOwed)
         End If
 
-        'WCED
+        ' WCED
         If RadioButton2.Checked AndAlso selectedDate.DayOfWeek >= DayOfWeek.Monday AndAlso selectedDate.DayOfWeek <= DayOfWeek.Wednesday Then
             Dim partTimeOwed As TimeSpan = timeIn - wced_startTime
             Dim timeCompleted As TimeSpan = timeOut - wced_endTime_mon_wed
