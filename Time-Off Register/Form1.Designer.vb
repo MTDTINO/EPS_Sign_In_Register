@@ -26,8 +26,6 @@ Partial Class Form1
         Label1 = New Label()
         Label2 = New Label()
         Label3 = New Label()
-        TextBox1 = New TextBox()
-        TextBox2 = New TextBox()
         DataGridView1 = New DataGridView()
         Column1 = New DataGridViewTextBoxColumn()
         Column2 = New DataGridViewTextBoxColumn()
@@ -39,6 +37,8 @@ Partial Class Form1
         RadioButton1 = New RadioButton()
         RadioButton2 = New RadioButton()
         RadioButton3 = New RadioButton()
+        DateTimePicker2 = New DateTimePicker()
+        DateTimePicker3 = New DateTimePicker()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -73,28 +73,16 @@ Partial Class Form1
         Label3.Size = New Size(56, 15)
         Label3.TabIndex = 4
         Label3.Text = "Time Out"' 
-        ' TextBox1
-        ' 
-        TextBox1.Location = New Point(88, 66)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(375, 23)
-        TextBox1.TabIndex = 5
-        ' 
-        ' TextBox2
-        ' 
-        TextBox2.Location = New Point(88, 108)
-        TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(375, 23)
-        TextBox2.TabIndex = 6
-        ' 
         ' DataGridView1
         ' 
+        DataGridView1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4})
-        DataGridView1.Location = New Point(21, 197)
+        DataGridView1.Location = New Point(12, 197)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.RowTemplate.Height = 25
-        DataGridView1.Size = New Size(442, 236)
+        DataGridView1.Size = New Size(459, 236)
         DataGridView1.TabIndex = 10
         ' 
         ' Column1
@@ -115,6 +103,7 @@ Partial Class Form1
         Column4.Name = "Column4"' 
         ' Button1
         ' 
+        Button1.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         Button1.Location = New Point(114, 483)
         Button1.Name = "Button1"
         Button1.Size = New Size(75, 23)
@@ -124,6 +113,7 @@ Partial Class Form1
         ' 
         ' Button2
         ' 
+        Button2.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         Button2.Location = New Point(297, 483)
         Button2.Name = "Button2"
         Button2.Size = New Size(75, 23)
@@ -133,6 +123,7 @@ Partial Class Form1
         ' 
         ' Button3
         ' 
+        Button3.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         Button3.Location = New Point(206, 483)
         Button3.Name = "Button3"
         Button3.Size = New Size(75, 23)
@@ -142,6 +133,7 @@ Partial Class Form1
         ' 
         ' RadioButton1
         ' 
+        RadioButton1.Anchor = AnchorStyles.Left Or AnchorStyles.Right
         RadioButton1.AutoSize = True
         RadioButton1.Location = New Point(61, 163)
         RadioButton1.Name = "RadioButton1"
@@ -153,6 +145,7 @@ Partial Class Form1
         ' 
         ' RadioButton2
         ' 
+        RadioButton2.Anchor = AnchorStyles.Left Or AnchorStyles.Right
         RadioButton2.AutoSize = True
         RadioButton2.Location = New Point(206, 163)
         RadioButton2.Name = "RadioButton2"
@@ -164,6 +157,7 @@ Partial Class Form1
         ' 
         ' RadioButton3
         ' 
+        RadioButton3.Anchor = AnchorStyles.Left Or AnchorStyles.Right
         RadioButton3.AutoSize = True
         RadioButton3.Location = New Point(363, 163)
         RadioButton3.Name = "RadioButton3"
@@ -173,11 +167,34 @@ Partial Class Form1
         RadioButton3.Text = "GA"
         RadioButton3.UseVisualStyleBackColor = True
         ' 
+        ' DateTimePicker2
+        ' 
+        DateTimePicker2.Format = DateTimePickerFormat.Time
+        DateTimePicker2.Location = New Point(88, 68)
+        DateTimePicker2.Name = "DateTimePicker2"
+        DateTimePicker2.ShowUpDown = True
+        DateTimePicker2.Size = New Size(375, 23)
+        DateTimePicker2.TabIndex = 17
+        DateTimePicker2.TabStop = False
+        ' 
+        ' DateTimePicker3
+        ' 
+        DateTimePicker3.Format = DateTimePickerFormat.Time
+        DateTimePicker3.Location = New Point(88, 110)
+        DateTimePicker3.Name = "DateTimePicker3"
+        DateTimePicker3.ShowUpDown = True
+        DateTimePicker3.Size = New Size(375, 23)
+        DateTimePicker3.TabIndex = 17
+        DateTimePicker3.TabStop = False
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        AutoValidate = AutoValidate.EnablePreventFocusChange
         ClientSize = New Size(483, 585)
+        Controls.Add(DateTimePicker3)
+        Controls.Add(DateTimePicker2)
         Controls.Add(RadioButton3)
         Controls.Add(RadioButton2)
         Controls.Add(RadioButton1)
@@ -185,12 +202,11 @@ Partial Class Form1
         Controls.Add(Button2)
         Controls.Add(Button1)
         Controls.Add(DataGridView1)
-        Controls.Add(TextBox2)
-        Controls.Add(TextBox1)
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(Label1)
         Controls.Add(DateTimePicker1)
+        MaximizeBox = False
         Name = "Form1"
         Text = "Form1"
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
@@ -202,8 +218,6 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox2 As TextBox
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
@@ -215,4 +229,6 @@ Partial Class Form1
     Friend WithEvents RadioButton1 As RadioButton
     Friend WithEvents RadioButton2 As RadioButton
     Friend WithEvents RadioButton3 As RadioButton
+    Friend WithEvents DateTimePicker2 As DateTimePicker
+    Friend WithEvents DateTimePicker3 As DateTimePicker
 End Class
