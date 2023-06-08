@@ -39,6 +39,9 @@ Partial Class Form1
         RadioButton3 = New RadioButton()
         DateTimePicker2 = New DateTimePicker()
         DateTimePicker3 = New DateTimePicker()
+        Label4 = New Label()
+        TextBox1 = New TextBox()
+        Button4 = New Button()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -104,7 +107,7 @@ Partial Class Form1
         ' Button1
         ' 
         Button1.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
-        Button1.Location = New Point(114, 483)
+        Button1.Location = New Point(102, 523)
         Button1.Name = "Button1"
         Button1.Size = New Size(75, 23)
         Button1.TabIndex = 11
@@ -114,19 +117,19 @@ Partial Class Form1
         ' Button2
         ' 
         Button2.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
-        Button2.Location = New Point(297, 483)
+        Button2.Location = New Point(285, 523)
         Button2.Name = "Button2"
-        Button2.Size = New Size(75, 23)
+        Button2.Size = New Size(90, 23)
         Button2.TabIndex = 12
-        Button2.Text = "CLEAR"
+        Button2.Text = "CLEAR TABLE"
         Button2.UseVisualStyleBackColor = True
         ' 
         ' Button3
         ' 
         Button3.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
-        Button3.Location = New Point(206, 483)
+        Button3.Location = New Point(183, 523)
         Button3.Name = "Button3"
-        Button3.Size = New Size(75, 23)
+        Button3.Size = New Size(96, 23)
         Button3.TabIndex = 13
         Button3.Text = "EXPORT"
         Button3.UseVisualStyleBackColor = True
@@ -187,12 +190,39 @@ Partial Class Form1
         DateTimePicker3.TabIndex = 17
         DateTimePicker3.TabStop = False
         ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.Location = New Point(102, 502)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(60, 15)
+        Label4.TabIndex = 18
+        Label4.Text = "File Name"' 
+        ' TextBox1
+        ' 
+        TextBox1.Location = New Point(169, 494)
+        TextBox1.Name = "TextBox1"
+        TextBox1.Size = New Size(142, 23)
+        TextBox1.TabIndex = 19
+        ' 
+        ' Button4
+        ' 
+        Button4.Location = New Point(317, 494)
+        Button4.Name = "Button4"
+        Button4.Size = New Size(58, 23)
+        Button4.TabIndex = 20
+        Button4.Text = "CLEAR"
+        Button4.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         AutoValidate = AutoValidate.EnablePreventFocusChange
         ClientSize = New Size(483, 585)
+        Controls.Add(Button4)
+        Controls.Add(TextBox1)
+        Controls.Add(Label4)
         Controls.Add(DateTimePicker3)
         Controls.Add(DateTimePicker2)
         Controls.Add(RadioButton3)
@@ -231,4 +261,7 @@ Partial Class Form1
     Friend WithEvents RadioButton3 As RadioButton
     Friend WithEvents DateTimePicker2 As DateTimePicker
     Friend WithEvents DateTimePicker3 As DateTimePicker
+    Friend WithEvents Label4 As Label
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Button4 As Button
 End Class

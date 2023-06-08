@@ -1,4 +1,9 @@
-﻿Public Class Form1
+﻿Imports System.IO
+Imports DocumentFormat.OpenXml
+Imports DocumentFormat.OpenXml.Packaging
+Imports DocumentFormat.OpenXml.Spreadsheet
+Public Class Form1
+
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
     End Sub
 
@@ -116,4 +121,74 @@
         DataGridView1.Rows.Clear()
     End Sub
 
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        If (TextBox1.Text = "") Then
+            MessageBox.Show("Please type a file name")
+            Return
+        Else
+            ' Create a new Excel workbook
+            Dim spreadsheetDocument As SpreadsheetDocument = SpreadsheetDocument.Create("C:\repos\EPS_Sign_In_Register\" + TextBox1.Text + ".xlsx", SpreadsheetDocumentType.Workbook)
+
+            ' Add a new worksheet to the workbook
+            Dim workbookPart As WorkbookPart = spreadsheetDocument.AddWorkbookPart()
+            workbookPart.Workbook = New Workbook()
+
+            Dim worksheetPart As WorksheetPart = workbookPart.AddNewPart(Of WorksheetPart)()
+            worksheetPart.Worksheet = New Worksheet(New SheetData())
+
+            Dim sheets As Sheets = spreadsheetDocument.WorkbookPart.Workbook.AppendChild(Of Sheets)(New Sheets())
+
+            ' Create a new sheet and specify the sheet ID
+            Dim sheet As Sheet = New Sheet() With {
+            .Id = spreadsheetDocument.WorkbookPart.GetIdOfPart(worksheetPart),
+            .SheetId = 1,
+            .Name = "Sheet1"
+        }
+            sheets.Append(sheet)
+
+            ' Get the worksheet data
+            Dim sheetData As SheetData = worksheetPart.Worksheet.GetFirstChild(Of SheetData)()
+
+            ' Set the column headers in the first row
+            Dim headerRow As Row = New Row()
+
+            For Each column As DataGridViewColumn In DataGridView1.Columns
+                headerRow.AppendChild(CreateCell(column.HeaderText))
+            Next
+
+            sheetData.AppendChild(headerRow)
+
+            ' Set the cell values from the DataGridView
+            For Each dgvRow As DataGridViewRow In DataGridView1.Rows
+                Dim newRow As Row = New Row()
+
+                For Each cell As DataGridViewCell In dgvRow.Cells
+                    If cell.Value IsNot Nothing Then
+                        newRow.AppendChild(CreateCell(cell.Value.ToString()))
+                    End If
+                Next
+
+                sheetData.AppendChild(newRow)
+            Next
+
+            ' Save the workbook
+            workbookPart.Workbook.Save()
+
+            ' Close the document
+            spreadsheetDocument.Dispose()
+
+            MessageBox.Show("Excel file saved successfully.")
+        End If
+    End Sub
+
+    Private Function CreateCell(cellValue As String) As Cell
+        Dim cell As Cell = New Cell()
+        cell.DataType = CellValues.String
+        cell.CellValue = New CellValue(cellValue)
+        Return cell
+    End Function
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        TextBox1.Text = ""
+    End Sub
 End Class
