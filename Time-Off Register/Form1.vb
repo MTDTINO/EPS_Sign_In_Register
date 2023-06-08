@@ -58,5 +58,11 @@
             Dim TimeOwed As TimeSpan = timeCompleted - partTimeOwed
             DataGridView1.Rows.Add(DateTimePicker1.Text, TextBox1.Text, TextBox2.Text, TimeOwed)
         End If
+
+        ' General Assistants
+        If RadioButton3.Checked Then
+            Dim TotalHoursDaily As TimeSpan = timeOut - timeIn
+            DataGridView1.Rows.Add(DateTimePicker1.Text, TextBox1.Text, TextBox2.Text, TotalHoursDaily)
+        End If
     End Sub
 End Class
