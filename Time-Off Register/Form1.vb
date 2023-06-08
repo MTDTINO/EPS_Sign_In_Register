@@ -21,7 +21,7 @@
         Dim selectedDate As DateTime = DateTimePicker1.Value
 
         ' PYEI
-        If RadioButton1.Checked = True AndAlso selectedDate.DayOfWeek >= DayOfWeek.Monday AndAlso selectedDate.DayOfWeek <= DayOfWeek.Thursday Then
+        If RadioButton1.Checked AndAlso selectedDate.DayOfWeek >= DayOfWeek.Monday AndAlso selectedDate.DayOfWeek <= DayOfWeek.Thursday Then
             Dim partTimeOwed As TimeSpan = timeIn - startTime_pyei
             Dim timeCompleted As TimeSpan = timeOut - endTime_mon_thurs
 
@@ -29,7 +29,7 @@
             DataGridView1.Rows.Add(DateTimePicker1.Text, TextBox1.Text, TextBox2.Text, TimeOwed)
         End If
 
-        If RadioButton1.Checked = True AndAlso selectedDate.DayOfWeek = DayOfWeek.Friday AndAlso (timeIn >= startTime_pyei) Then
+        If RadioButton1.Checked AndAlso selectedDate.DayOfWeek = DayOfWeek.Friday AndAlso (timeIn >= startTime_pyei) Then
             Dim partTimeOwed As TimeSpan = timeIn - startTime_pyei
             Dim timeCompleted As TimeSpan = timeOut - endTime_frid
 
