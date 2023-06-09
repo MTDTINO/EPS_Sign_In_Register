@@ -191,4 +191,26 @@ Public Class Form1
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         TextBox1.Text = ""
     End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Dim totalTime As TimeSpan = TimeSpan.Zero
+
+        For Each row As DataGridViewRow In DataGridView1.Rows
+            Dim cell As DataGridViewCell = row.Cells(3) ' Assuming column 4 is at index 3
+
+            If cell.Value IsNot Nothing AndAlso TypeOf cell.Value Is TimeSpan Then
+                totalTime += CType(cell.Value, TimeSpan)
+            End If
+        Next
+
+        ' Insert the sum into the first row of column 5
+        If DataGridView1.Rows.Count > 0 Then
+            Dim firstRow As DataGridViewRow = DataGridView1.Rows(0)
+            Dim cell As DataGridViewCell = firstRow.Cells(4) ' Assuming column 5 is at index 4
+
+            cell.Value = totalTime.ToString()
+        End If
+
+        MessageBox.Show("Sum calculated and inserted into the first row of column 5.")
+    End Sub
 End Class

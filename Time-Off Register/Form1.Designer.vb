@@ -27,10 +27,6 @@ Partial Class Form1
         Label2 = New Label()
         Label3 = New Label()
         DataGridView1 = New DataGridView()
-        Column1 = New DataGridViewTextBoxColumn()
-        Column2 = New DataGridViewTextBoxColumn()
-        Column3 = New DataGridViewTextBoxColumn()
-        Column4 = New DataGridViewTextBoxColumn()
         Button1 = New Button()
         Button2 = New Button()
         Button3 = New Button()
@@ -42,6 +38,12 @@ Partial Class Form1
         Label4 = New Label()
         TextBox1 = New TextBox()
         Button4 = New Button()
+        Button5 = New Button()
+        Column1 = New DataGridViewTextBoxColumn()
+        Column2 = New DataGridViewTextBoxColumn()
+        Column3 = New DataGridViewTextBoxColumn()
+        Column4 = New DataGridViewTextBoxColumn()
+        Column5 = New DataGridViewTextBoxColumn()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -81,33 +83,17 @@ Partial Class Form1
         DataGridView1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4})
+        DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4, Column5})
         DataGridView1.Location = New Point(12, 197)
         DataGridView1.Name = "DataGridView1"
         DataGridView1.RowTemplate.Height = 25
         DataGridView1.Size = New Size(459, 236)
         DataGridView1.TabIndex = 10
         ' 
-        ' Column1
-        ' 
-        Column1.HeaderText = "Date"
-        Column1.Name = "Column1"' 
-        ' Column2
-        ' 
-        Column2.HeaderText = "Time In"
-        Column2.Name = "Column2"' 
-        ' Column3
-        ' 
-        Column3.HeaderText = "Time Out"
-        Column3.Name = "Column3"' 
-        ' Column4
-        ' 
-        Column4.HeaderText = "Time Owed"
-        Column4.Name = "Column4"' 
         ' Button1
         ' 
         Button1.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
-        Button1.Location = New Point(102, 523)
+        Button1.Location = New Point(100, 493)
         Button1.Name = "Button1"
         Button1.Size = New Size(75, 23)
         Button1.TabIndex = 11
@@ -117,7 +103,7 @@ Partial Class Form1
         ' Button2
         ' 
         Button2.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
-        Button2.Location = New Point(285, 523)
+        Button2.Location = New Point(283, 493)
         Button2.Name = "Button2"
         Button2.Size = New Size(90, 23)
         Button2.TabIndex = 12
@@ -127,7 +113,7 @@ Partial Class Form1
         ' Button3
         ' 
         Button3.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
-        Button3.Location = New Point(183, 523)
+        Button3.Location = New Point(181, 493)
         Button3.Name = "Button3"
         Button3.Size = New Size(96, 23)
         Button3.TabIndex = 13
@@ -193,33 +179,63 @@ Partial Class Form1
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(102, 502)
+        Label4.Location = New Point(100, 472)
         Label4.Name = "Label4"
         Label4.Size = New Size(60, 15)
         Label4.TabIndex = 18
         Label4.Text = "File Name"' 
         ' TextBox1
         ' 
-        TextBox1.Location = New Point(169, 494)
+        TextBox1.Location = New Point(167, 464)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(142, 23)
         TextBox1.TabIndex = 19
         ' 
         ' Button4
         ' 
-        Button4.Location = New Point(317, 494)
+        Button4.Location = New Point(315, 464)
         Button4.Name = "Button4"
         Button4.Size = New Size(58, 23)
         Button4.TabIndex = 20
         Button4.Text = "CLEAR"
         Button4.UseVisualStyleBackColor = True
         ' 
+        ' Button5
+        ' 
+        Button5.Location = New Point(100, 522)
+        Button5.Name = "Button5"
+        Button5.Size = New Size(273, 23)
+        Button5.TabIndex = 21
+        Button5.Text = "Total Time Owed"
+        Button5.UseVisualStyleBackColor = True
+        ' 
+        ' Column1
+        ' 
+        Column1.HeaderText = "Date"
+        Column1.Name = "Column1"' 
+        ' Column2
+        ' 
+        Column2.HeaderText = "Time In"
+        Column2.Name = "Column2"' 
+        ' Column3
+        ' 
+        Column3.HeaderText = "Time Out"
+        Column3.Name = "Column3"' 
+        ' Column4
+        ' 
+        Column4.HeaderText = "Time Owed"
+        Column4.Name = "Column4"' 
+        ' Column5
+        ' 
+        Column5.HeaderText = "TimeOwedColumn"
+        Column5.Name = "Column5"' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         AutoValidate = AutoValidate.EnablePreventFocusChange
         ClientSize = New Size(483, 585)
+        Controls.Add(Button5)
         Controls.Add(Button4)
         Controls.Add(TextBox1)
         Controls.Add(Label4)
@@ -249,10 +265,6 @@ Partial Class Form1
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
@@ -264,4 +276,10 @@ Partial Class Form1
     Friend WithEvents Label4 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Button4 As Button
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
 End Class
