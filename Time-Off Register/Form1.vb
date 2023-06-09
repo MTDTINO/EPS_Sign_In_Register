@@ -193,13 +193,17 @@ Public Class Form1
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        ' Calculate the sum of negative time values in column 4
         Dim totalTime As TimeSpan = TimeSpan.Zero
 
         For Each row As DataGridViewRow In DataGridView1.Rows
             Dim cell As DataGridViewCell = row.Cells(3) ' Assuming column 4 is at index 3
 
             If cell.Value IsNot Nothing AndAlso TypeOf cell.Value Is TimeSpan Then
-                totalTime += CType(cell.Value, TimeSpan)
+                Dim timeValue As TimeSpan = CType(cell.Value, TimeSpan)
+                If timeValue < TimeSpan.Zero Then
+                    totalTime += timeValue
+                End If
             End If
         Next
 
@@ -211,6 +215,6 @@ Public Class Form1
             cell.Value = totalTime.ToString()
         End If
 
-        MessageBox.Show("Sum calculated and inserted into the first row of column 5.")
+        MessageBox.Show("Sum of negative time values calculated and inserted into the first row of column 5.")
     End Sub
 End Class
