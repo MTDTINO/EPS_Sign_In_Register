@@ -2,11 +2,12 @@
 Imports DocumentFormat.OpenXml
 Imports DocumentFormat.OpenXml.Packaging
 Imports DocumentFormat.OpenXml.Spreadsheet
+Imports Excel = Microsoft.Office.Interop.Excel
 Public Class Form1
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
     End Sub
 
-    Private Sub Form1_Load1(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Form1_Load1(sender As Object, e As EventArgs)
         DateTimePicker2.Format = DateTimePickerFormat.Custom
         DateTimePicker2.CustomFormat = "HH:mm"
 
@@ -14,7 +15,7 @@ Public Class Form1
         DateTimePicker3.CustomFormat = "HH:mm"
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs)
         Dim timeIn As DateTime = DateTime.Parse(DateTimePicker2.Text)
         Dim timeOut As DateTime = DateTime.Parse(DateTimePicker3.Text)
 
@@ -116,11 +117,11 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Button2_Click2(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click2(sender As Object, e As EventArgs)
         DataGridView1.Rows.Clear()
     End Sub
 
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+    Private Sub Button6_Click(sender As Object, e As EventArgs)
         Dim totalSpan As TimeSpan = TimeSpan.Zero
 
         For Each row As DataGridViewRow In DataGridView1.Rows
@@ -139,7 +140,7 @@ Public Class Form1
         DataGridView1.Rows(0).Cells(5).Value = totalSpan.ToString()
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(sender As Object, e As EventArgs)
         ' Calculate the sum of negative time values in column 4
         Dim totalTime As TimeSpan = TimeSpan.Zero
 
@@ -165,7 +166,7 @@ Public Class Form1
         MessageBox.Show("Sum of negative time values calculated and inserted into the first row of column 5.")
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs)
         ' Check if the textbox is empty
         If String.IsNullOrEmpty(TextBox1.Text) Then
             MessageBox.Show("Please enter a file name.")
