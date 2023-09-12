@@ -46,6 +46,7 @@ Partial Class Form1
         Button4 = New Button()
         Button5 = New Button()
         Button6 = New Button()
+        Button7 = New Button()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -129,9 +130,9 @@ Partial Class Form1
         ' Button2
         ' 
         Button2.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        Button2.Location = New Point(326, 475)
+        Button2.Location = New Point(415, 475)
         Button2.Name = "Button2"
-        Button2.Size = New Size(253, 23)
+        Button2.Size = New Size(164, 23)
         Button2.TabIndex = 12
         Button2.Text = "CLEAR TABLE"
         Button2.UseVisualStyleBackColor = True
@@ -141,7 +142,7 @@ Partial Class Form1
         Button3.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Button3.Location = New Point(150, 475)
         Button3.Name = "Button3"
-        Button3.Size = New Size(170, 23)
+        Button3.Size = New Size(93, 23)
         Button3.TabIndex = 13
         Button3.Text = "EXPORT"
         Button3.UseVisualStyleBackColor = True
@@ -244,12 +245,22 @@ Partial Class Form1
         Button6.Text = "TTO"
         Button6.UseVisualStyleBackColor = True
         ' 
+        ' Button7
+        ' 
+        Button7.Location = New Point(258, 475)
+        Button7.Name = "Button7"
+        Button7.Size = New Size(148, 23)
+        Button7.TabIndex = 23
+        Button7.Text = "Import"
+        Button7.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         AutoValidate = AutoValidate.EnablePreventFocusChange
         ClientSize = New Size(591, 618)
+        Controls.Add(Button7)
         Controls.Add(Button6)
         Controls.Add(Button5)
         Controls.Add(Button4)
@@ -299,4 +310,5 @@ Partial Class Form1
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents Button7 As Button
 End Class
