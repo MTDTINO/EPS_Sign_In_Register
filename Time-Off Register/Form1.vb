@@ -7,10 +7,7 @@ Imports Microsoft.Office.Interop.Excel
 
 
 Public Class Form1
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
-    End Sub
-
-    Private Sub Form1_Load1(sender As Object, e As EventArgs)
+    Private Sub Form1_Load1(sender As Object, e As EventArgs) Handles MyBase.Load
         DateTimePicker2.Format = DateTimePickerFormat.Custom
         DateTimePicker2.CustomFormat = "HH:mm"
 
@@ -124,7 +121,7 @@ Public Class Form1
         DataGridView1.Rows.Clear()
     End Sub
 
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.click
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         Dim totalSpan As TimeSpan = TimeSpan.Zero
 
         For Each row As DataGridViewRow In DataGridView1.Rows
@@ -144,29 +141,27 @@ Public Class Form1
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        ' Calculate the sum of negative time values in column 4
-        Dim totalTime As TimeSpan = TimeSpan.Zero
+        ' Initialize a variable to store the sum of negative time values
+        Dim totalNegativeTime As TimeSpan = TimeSpan.Zero
 
+        ' Iterate through each row in the DataGridView
         For Each row As DataGridViewRow In DataGridView1.Rows
-            Dim cell As DataGridViewCell = row.Cells(3) ' Assuming column 4 is at index 3
-
-            If cell.Value IsNot Nothing AndAlso TypeOf cell.Value Is TimeSpan Then
-                Dim timeValue As TimeSpan = CType(cell.Value, TimeSpan)
-                If timeValue < TimeSpan.Zero Then
-                    totalTime += timeValue
+            ' Check if the cell in column 4 is not null
+            If Not row.Cells(3).Value Is Nothing Then
+                ' Try to parse the cell's value as a TimeSpan
+                Dim cellValue As TimeSpan
+                If TimeSpan.TryParse(row.Cells(3).Value.ToString(), cellValue) Then
+                    ' Check if the parsed time is negative
+                    If cellValue < TimeSpan.Zero Then
+                        ' Add the negative time value to the total
+                        totalNegativeTime += cellValue
+                    End If
                 End If
             End If
         Next
 
-        ' Insert the sum into the first row of column 5
-        If DataGridView1.Rows.Count > 0 Then
-            Dim firstRow As DataGridViewRow = DataGridView1.Rows(0)
-            Dim cell As DataGridViewCell = firstRow.Cells(4) ' Assuming column 5 is at index 4
-
-            cell.Value = totalTime.ToString()
-        End If
-
-        MessageBox.Show("Sum of negative time values calculated and inserted into the first row of column 5.")
+        ' Set the total negative time value in the first row of column 5
+        DataGridView1.Rows(0).Cells(4).Value = totalNegativeTime.ToString()
     End Sub
 
     Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
@@ -177,7 +172,7 @@ Public Class Form1
         End If
 
         ' Create a new Excel workbook
-        Dim spreadsheetDocument As SpreadsheetDocument = SpreadsheetDocument.Create(Path.Combine("C:\repos\EPS_Sign_In_Register", TextBox1.Text & ".xlsx"), SpreadsheetDocumentType.Workbook)
+        Dim spreadsheetDocument As SpreadsheetDocument = SpreadsheetDocument.Create(Path.Combine("C:\Users\Tino\Downloads\", TextBox1.Text & ".xlsx"), SpreadsheetDocumentType.Workbook)
 
         ' Add a new worksheet to the workbook
         Dim workbookPart As WorkbookPart = spreadsheetDocument.AddWorkbookPart()
@@ -237,7 +232,7 @@ Public Class Form1
         Return cell
     End Function
 
-    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Dim openFileDialog As New OpenFileDialog()
         openFileDialog.Filter = "Excel Files|*.xlsx;*.xls"
         openFileDialog.Title = "Select an Excel File"
@@ -251,9 +246,13 @@ Public Class Form1
                 excelApp = New Application()
                 excelWorkbook = excelApp.Workbooks.Open(openFileDialog.FileName)
                 excelWorksheet = excelWorkbook.Application.Sheets(1) ' Change the sheet index as needed
-
                 Dim range As Range = excelWorksheet.UsedRange
                 Dim dataArr(,) As Object = range.Value
+
+                'import filename into textbox
+                Dim selectedFile = openFileDialog.FileName
+                Dim fileName = Path.GetFileNameWithoutExtension(selectedFile)
+                TextBox1.Text = fileName
 
                 ' Bind the data to the DataGridView
                 DataGridView1.ColumnCount = range.Columns.Count
