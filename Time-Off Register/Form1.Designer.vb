@@ -46,6 +46,7 @@ Partial Class Form1
         Button4 = New Button()
         Button5 = New Button()
         Button6 = New Button()
+        Button7 = New Button()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -82,7 +83,7 @@ Partial Class Form1
         Label3.Text = "Time Out"' 
         ' DataGridView1
         ' 
-        DataGridView1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        DataGridView1.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridView1.Columns.AddRange(New DataGridViewColumn() {Column1, Column2, Column3, Column4, Column5, Column6})
@@ -118,8 +119,8 @@ Partial Class Form1
         Column6.Name = "Column6"' 
         ' Button1
         ' 
-        Button1.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
-        Button1.Location = New Point(13, 474)
+        Button1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Button1.Location = New Point(13, 475)
         Button1.Name = "Button1"
         Button1.Size = New Size(123, 23)
         Button1.TabIndex = 11
@@ -128,29 +129,29 @@ Partial Class Form1
         ' 
         ' Button2
         ' 
-        Button2.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
-        Button2.Location = New Point(326, 474)
+        Button2.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Button2.Location = New Point(415, 475)
         Button2.Name = "Button2"
-        Button2.Size = New Size(253, 23)
+        Button2.Size = New Size(164, 23)
         Button2.TabIndex = 12
         Button2.Text = "CLEAR TABLE"
         Button2.UseVisualStyleBackColor = True
         ' 
         ' Button3
         ' 
-        Button3.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
-        Button3.Location = New Point(150, 474)
+        Button3.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Button3.Location = New Point(150, 475)
         Button3.Name = "Button3"
-        Button3.Size = New Size(170, 23)
+        Button3.Size = New Size(93, 23)
         Button3.TabIndex = 13
         Button3.Text = "EXPORT"
         Button3.UseVisualStyleBackColor = True
         ' 
         ' RadioButton1
         ' 
-        RadioButton1.Anchor = AnchorStyles.Left Or AnchorStyles.Right
+        RadioButton1.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         RadioButton1.AutoSize = True
-        RadioButton1.Location = New Point(113, 163)
+        RadioButton1.Location = New Point(113, 164)
         RadioButton1.Name = "RadioButton1"
         RadioButton1.Size = New Size(48, 19)
         RadioButton1.TabIndex = 14
@@ -160,9 +161,9 @@ Partial Class Form1
         ' 
         ' RadioButton2
         ' 
-        RadioButton2.Anchor = AnchorStyles.Left Or AnchorStyles.Right
+        RadioButton2.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         RadioButton2.AutoSize = True
-        RadioButton2.Location = New Point(258, 163)
+        RadioButton2.Location = New Point(258, 164)
         RadioButton2.Name = "RadioButton2"
         RadioButton2.Size = New Size(58, 19)
         RadioButton2.TabIndex = 15
@@ -172,9 +173,9 @@ Partial Class Form1
         ' 
         ' RadioButton3
         ' 
-        RadioButton3.Anchor = AnchorStyles.Left Or AnchorStyles.Right
+        RadioButton3.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         RadioButton3.AutoSize = True
-        RadioButton3.Location = New Point(415, 163)
+        RadioButton3.Location = New Point(415, 164)
         RadioButton3.Name = "RadioButton3"
         RadioButton3.Size = New Size(41, 19)
         RadioButton3.TabIndex = 16
@@ -232,7 +233,7 @@ Partial Class Form1
         Button5.Name = "Button5"
         Button5.Size = New Size(566, 23)
         Button5.TabIndex = 21
-        Button5.Text = "Time Owed"
+        Button5.Text = "TIME OWED"
         Button5.UseVisualStyleBackColor = True
         ' 
         ' Button6
@@ -244,12 +245,22 @@ Partial Class Form1
         Button6.Text = "TTO"
         Button6.UseVisualStyleBackColor = True
         ' 
+        ' Button7
+        ' 
+        Button7.Location = New Point(258, 475)
+        Button7.Name = "Button7"
+        Button7.Size = New Size(148, 23)
+        Button7.TabIndex = 23
+        Button7.Text = "IMPORT"
+        Button7.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         AutoValidate = AutoValidate.EnablePreventFocusChange
-        ClientSize = New Size(591, 585)
+        ClientSize = New Size(591, 618)
+        Controls.Add(Button7)
         Controls.Add(Button6)
         Controls.Add(Button5)
         Controls.Add(Button4)
@@ -300,4 +311,5 @@ Partial Class Form1
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents Button7 As Button
 End Class
