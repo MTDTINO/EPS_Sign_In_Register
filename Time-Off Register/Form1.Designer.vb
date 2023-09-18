@@ -233,7 +233,7 @@ Partial Class Form1
         Button5.Name = "Button5"
         Button5.Size = New Size(566, 23)
         Button5.TabIndex = 21
-        Button5.Text = "Time Owed"
+        Button5.Text = "TIME OWED"
         Button5.UseVisualStyleBackColor = True
         ' 
         ' Button6
@@ -279,6 +279,7 @@ Partial Class Form1
         Controls.Add(Label2)
         Controls.Add(Label1)
         Controls.Add(DateTimePicker1)
+        MaximizeBox = False
         Name = "Form1"
         Text = "Form1"
         CType(DataGridView1, ComponentModel.ISupportInitialize).EndInit()
