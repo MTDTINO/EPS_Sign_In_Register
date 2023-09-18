@@ -2,7 +2,6 @@
 Imports DocumentFormat.OpenXml
 Imports DocumentFormat.OpenXml.Packaging
 Imports DocumentFormat.OpenXml.Spreadsheet
-Imports Excel = Microsoft.Office.Interop.Excel
 Public Class Form1
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
     End Sub
@@ -15,7 +14,7 @@ Public Class Form1
         DateTimePicker3.CustomFormat = "HH:mm"
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs)
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim timeIn As DateTime = DateTime.Parse(DateTimePicker2.Text)
         Dim timeOut As DateTime = DateTime.Parse(DateTimePicker3.Text)
 
@@ -117,7 +116,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Button2_Click2(sender As Object, e As EventArgs)
+    Private Sub Button2_Click2(sender As Object, e As EventArgs) Handles Button2.Click
         DataGridView1.Rows.Clear()
     End Sub
 
@@ -140,7 +139,7 @@ Public Class Form1
         DataGridView1.Rows(0).Cells(5).Value = totalSpan.ToString()
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs)
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         ' Calculate the sum of negative time values in column 4
         Dim totalTime As TimeSpan = TimeSpan.Zero
 
@@ -166,7 +165,7 @@ Public Class Form1
         MessageBox.Show("Sum of negative time values calculated and inserted into the first row of column 5.")
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs)
+    Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
         ' Check if the textbox is empty
         If String.IsNullOrEmpty(TextBox1.Text) Then
             MessageBox.Show("Please enter a file name.")
@@ -222,7 +221,7 @@ Public Class Form1
         workbookPart.Workbook.Save()
 
         ' Close the document
-        spreadsheetDocument.Close()
+        spreadsheetDocument.Dispose()
 
         MessageBox.Show("Excel file saved successfully.")
     End Sub

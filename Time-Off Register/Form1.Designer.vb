@@ -251,7 +251,7 @@ Partial Class Form1
         Button7.Name = "Button7"
         Button7.Size = New Size(148, 23)
         Button7.TabIndex = 23
-        Button7.Text = "Import"
+        Button7.Text = "IMPORT"
         Button7.UseVisualStyleBackColor = True
         ' 
         ' Form1
