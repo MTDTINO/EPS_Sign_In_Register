@@ -232,7 +232,7 @@ Public Class Form1
         Return cell
     End Function
 
-    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button5.Click
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         Dim openFileDialog As New OpenFileDialog()
         openFileDialog.Filter = "Excel Files|*.xlsx;*.xls"
         openFileDialog.Title = "Select an Excel File"
