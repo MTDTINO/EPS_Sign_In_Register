@@ -1,7 +1,11 @@
 ﻿Imports System.IO
+Imports System.Runtime.InteropServices
 Imports DocumentFormat.OpenXml
 Imports DocumentFormat.OpenXml.Packaging
 Imports DocumentFormat.OpenXml.Spreadsheet
+Imports Microsoft.Office.Interop.Excel
+
+
 Public Class Form1
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
     End Sub
@@ -120,7 +124,7 @@ Public Class Form1
         DataGridView1.Rows.Clear()
     End Sub
 
-    Private Sub Button6_Click(sender As Object, e As EventArgs)
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.click
         Dim totalSpan As TimeSpan = TimeSpan.Zero
 
         For Each row As DataGridViewRow In DataGridView1.Rows
@@ -177,12 +181,12 @@ Public Class Form1
 
         ' Add a new worksheet to the workbook
         Dim workbookPart As WorkbookPart = spreadsheetDocument.AddWorkbookPart()
-        workbookPart.Workbook = New Workbook()
+        workbookPart.Workbook = New Spreadsheet.Workbook()
 
         Dim worksheetPart As WorksheetPart = workbookPart.AddNewPart(Of WorksheetPart)()
-        worksheetPart.Worksheet = New Worksheet(New SheetData())
+        worksheetPart.Worksheet = New Spreadsheet.Worksheet(New SheetData())
 
-        Dim sheets As Sheets = spreadsheetDocument.WorkbookPart.Workbook.AppendChild(Of Sheets)(New Sheets())
+        Dim sheets As Spreadsheet.Sheets = spreadsheetDocument.WorkbookPart.Workbook.AppendChild(Of Spreadsheet.Sheets)(New Spreadsheet.Sheets())
 
         ' Create a new sheet and specify the sheet ID
         Dim sheet As Sheet = New Sheet() With {
@@ -234,6 +238,54 @@ Public Class Form1
     End Function
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        Dim openFileDialog As New OpenFileDialog()
+        openFileDialog.Filter = "Excel Files|*.xlsx;*.xls"
+        openFileDialog.Title = "Select an Excel File"
 
+        If openFileDialog.ShowDialog() = DialogResult.OK Then
+            Dim excelApp As Application
+            Dim excelWorkbook As Microsoft.Office.Interop.Excel.Workbook
+            Dim excelWorksheet As Microsoft.Office.Interop.Excel.Worksheet
+
+            Try
+                excelApp = New Application()
+                excelWorkbook = excelApp.Workbooks.Open(openFileDialog.FileName)
+                excelWorksheet = excelWorkbook.Application.Sheets(1) ' Change the sheet index as needed
+
+                Dim range As Range = excelWorksheet.UsedRange
+                Dim dataArr(,) As Object = range.Value
+
+                ' Bind the data to the DataGridView
+                DataGridView1.ColumnCount = range.Columns.Count
+                For col As Integer = 1 To range.Columns.Count
+                    DataGridView1.Columns(col - 1).HeaderText = dataArr(1, col)
+                Next
+
+                For row As Integer = 2 To range.Rows.Count
+                    Dim rowData(range.Columns.Count - 1) As String
+                    For col As Integer = 1 To range.Columns.Count
+                        If dataArr(row, col) IsNot Nothing Then
+                            rowData(col - 1) = dataArr(row, col).ToString()
+                        Else
+                            rowData(col - 1) = String.Empty ' Set an empty string or another default value
+                        End If
+                    Next
+                    DataGridView1.Rows.Add(rowData)
+                Next
+
+
+            Catch ex As Exception
+                MessageBox.Show("Error: " & ex.Message)
+            Finally
+                If excelWorkbook IsNot Nothing Then
+                    excelWorkbook.Close()
+                    Marshal.ReleaseComObject(excelWorkbook)
+                End If
+                If excelApp IsNot Nothing Then
+                    excelApp.Quit()
+                    Marshal.ReleaseComObject(excelApp)
+                End If
+            End Try
+        End If
     End Sub
 End Class
